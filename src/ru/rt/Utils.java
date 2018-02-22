@@ -34,7 +34,7 @@ public class Utils  {
     }
 
     public void ping (String ip){
-        String url = "http://apis3.dtd/sendconfig.php?ip="+ip+"&actionSend+Ping&uplink=9";
+        String url = "http://apis3.dtd/sendconfig.php?ip="+ip+"&action=Send+Ping&uplink=9";
         try {
             URL obj = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
@@ -49,6 +49,7 @@ public class Utils  {
                 response.append(inputLine);
             }
             in.close();
+            System.out.print("Ping: "+ip +"It's seems ");
             if (response.toString().toLowerCase().contains(GOOD_PING))
             {
                 System.out.println("Good");
