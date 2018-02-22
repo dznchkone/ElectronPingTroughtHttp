@@ -34,7 +34,7 @@ public class Utils  {
     }
 
     public void ping (String ip){
-        String url = "http://www.apis3.dtd/sendconfig.php?ip="+ip+"&actionSend+Ping&uplink=9";
+        String url = "http://apis3.dtd/sendconfig.php?ip="+ip+"&actionSend+Ping&uplink=9";
         try {
             URL obj = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
