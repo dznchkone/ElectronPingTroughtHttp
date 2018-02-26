@@ -6,12 +6,16 @@ import java.io.IOException;
 public class Main {
 
     public static void main (String[] args) {
-        int fr =1;
         Utils t = new Utils();
+        t.test();
         do {
-            fr =0;
-            t.test();
-            t.ping("10.107.3.19");
-        } while (!t.toExit() && fr!=0);
+            try {
+                t.readFromFile("xlsx/IPs.xlsx");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } while (!t.toExit());
     }
+
+
 }

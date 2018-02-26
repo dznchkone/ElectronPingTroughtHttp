@@ -1,10 +1,17 @@
 package ru.rt;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Utils  {
@@ -49,7 +56,7 @@ public class Utils  {
                 response.append(inputLine);
             }
             in.close();
-            System.out.print("Ping: "+ip +"It's seems ");
+            System.out.print("Ping: "+ip +" It's seems ");
             if (response.toString().toLowerCase().contains(GOOD_PING))
             {
                 System.out.println("Good");
@@ -71,6 +78,30 @@ public class Utils  {
         } else {
             return false;
         }
+    }
+
+    public String readIP (){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите ip контроллера: ");
+        String in = sc.nextLine();
+        if (in.isEmpty()){
+            return null;
+        } else {
+            return in;
+        }
+    }
+
+    public void readFromFile (String file) throws IOException{
+        XSSFWorkbook ipsBook = new XSSFWorkbook(new FileInputStream(file));
+        XSSFSheet ipsExcelSheet = ipsBook.getSheetAt(0);
+
+        Iterator<Row> it = ipsExcelSheet.iterator();
+        while (it.hasNext()){
+            Row row = it.next();
+            String ip = row.getCell(2).toString();
+            ping(ip);
+        }
+
     }
 
 }
