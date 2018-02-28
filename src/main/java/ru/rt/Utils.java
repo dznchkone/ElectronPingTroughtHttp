@@ -1,24 +1,19 @@
 package ru.rt;
 
-import org.apache.poi.hssf.util.HSSFColor;
+
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Color;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import static org.apache.poi.hssf.util.HSSFColor.*;
+
 
 public class Utils  {
     private final static String GOOD_PING = "10 received";
-    private final XSSFColor GOOD_COLOR= new XSSFColor(new java.awt.Color(146,208,80));
-    private final XSSFColor BAD_COLOR = new XSSFColor(new java.awt.Color(255,0,0));
 
     public void test() {
         String url = "http://www.google.com/";
@@ -112,22 +107,15 @@ public class Utils  {
             System.out.println("Ping ip: "+ ip);
             if (ping(ip)){
                 Cell seems = row.createCell(3);
-                style.setFillBackgroundColor(GOOD_COLOR);
-                style.setFillForegroundColor(GOOD_COLOR);
-                style.setFillPattern(CellStyle.SOLID_FOREGROUND);
                 seems.setCellValue("Good");
-                seems.setCellStyle(style);
+
 
                 //System.out.println(seems.toString());
                 ipsBook.write(new FileOutputStream(file));
 
             } else {
                 Cell seems = row.createCell(3);
-                style.setFillBackgroundColor(BAD_COLOR);
-                style.setFillForegroundColor(BAD_COLOR);
-                style.setFillPattern(CellStyle.SOLID_FOREGROUND);
                 seems.setCellValue("Bad");
-                seems.setCellStyle(style);
                // System.out.println(seems.toString());
                 ipsBook.write(new FileOutputStream(file));
 

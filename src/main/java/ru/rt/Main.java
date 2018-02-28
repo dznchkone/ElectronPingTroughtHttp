@@ -7,7 +7,7 @@ public class Main {
 
     public static void main (String[] args) {
         Utils t = new Utils();
-        t.test();
+       // t.test();
         do {
             try {
                 System.out.print("С каким файлом работаем[Enter - файл по дефолту]: ");
