@@ -10,7 +10,14 @@ public class Main {
         t.test();
         do {
             try {
-                t.readFromFile("xlsx/IPs.xlsx");
+                System.out.print("С каким файлом работаем[Enter - файл по дефолту]: ");
+                String file = t.smplInput();
+                if (file.equals("null")){
+                    t.readFromFile("xlsx/IPs.xlsx");
+                } else {
+                    t.readFromFile("xlsx/"+ file);
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
