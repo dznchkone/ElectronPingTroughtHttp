@@ -1,7 +1,6 @@
 package ru.rt;
 
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -99,6 +98,7 @@ public class Utils  {
         while (it.hasNext()){
             Row row = it.next();
             String ip = row.getCell(2).toString();
+            System.out.println("Ping ip: "+ ip);
             ping(ip);
         }
 
